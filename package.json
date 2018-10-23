@@ -9,7 +9,8 @@
     "react-syntax-highlighter": "^9.0.1"
   },
   "scripts": {
-    "start": "mdx-deck deck.mdx"
+    "start": "mdx-deck deck.mdx",
+    "build": "mdx-deck build --no-html deck.mdx"
   },
   "devDependencies": {
     "mdx-deck-code-surfer": "^0.5.3",
