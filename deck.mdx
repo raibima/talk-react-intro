@@ -1,0 +1,259 @@
+import { CodeSurfer } from 'mdx-deck-code-surfer';
+
+import shadesOfPurple from 'prism-react-renderer/themes/shadesOfPurple';
+
+export { default as theme } from './theme';
+
+# Intro to React
+For Backend Developers
+
+---
+
+## Agenda
+
+- Common JS syntax & expressions
+- JS module system
+- React
+
+---
+
+## #1
+# syntax & expressions
+
+---
+
+## Once upon a time...
+
+```js
+[
+  {"name": "Theon", "team": "Feature"},
+  {"name": "Steven", "team": "Inventory"},
+  {"name": "Aput", "team": "Hore"}
+]
+```
+
+---
+
+# "THEON, STEVEN, APUT"
+
+---
+
+<CodeSurfer
+  title="Collectionz.java"
+  language="java"
+  theme={shadesOfPurple}
+  code={require('!raw-loader!./snippets/syntax-common.java')}
+  steps={[
+    { notes: 'Working with collections' },
+    { lines: [1], notes: 'Declare the initial result' },
+    { lines: [3, 11], notes: 'Loop over list items' },
+    { range: [4, 6], notes: 'Concatenate result with every single name' },
+    { range: [8, 10], notes: 'If not the last item, add the separator' },
+    { lines: [13], notes: 'Finally, print the result' }
+  ]}
+/>
+
+---
+
+<img src="https://media.giphy.com/media/NaboQwhxK3gMU/giphy.gif" width="960" />
+
+---
+
+<CodeSurfer
+  title="JavaScript"
+  language="javascript"
+  theme={shadesOfPurple}
+  code={require('!raw-loader!./snippets/syntax-common.js')}
+  steps={[
+    { notes: '🤔 🤔 🤔' },
+    { range: [1, 4], notes: 'This is the collection' },
+    { lines: [7, 8], notes: 'Extract the names' },
+    { lines: [9], notes: 'Make it uppercase' },
+    { lines: [10], notes: 'Flush all elements into a string, separated by comma' },
+    { lines: [12], notes: '✨ Voilà! ✨' }
+  ]}
+/>
+
+---
+
+<img src="https://media.giphy.com/media/3oKIPlLZEbEbacWqOc/giphy.gif" width="960" />
+
+---
+
+## #2
+# MODULE SYSTEM
+
+---
+
+<CodeSurfer
+  title="AwesomeModule.js"
+  language="javascript"
+  theme={shadesOfPurple}
+  code={require('!raw-loader!./snippets/module-system.js')}
+  steps={[
+    { notes: 'This is a module' },
+    { range: [3, 5], notes: 'Write your code' },
+    { lines: [7], notes: 'Export it' },
+    { notes: 'That\'s it!'},
+    { lines: [1], notes: 'This is private, btw' },
+  ]}
+/>
+
+---
+
+<CodeSurfer
+  title="AnotherModule.js"
+  language="javascript"
+  theme={shadesOfPurple}
+  code={require('!raw-loader!./snippets/module-system-2.js')}
+  steps={[
+    { notes: 'This is also a module' },
+    { lines: [1, 3], notes: 'Take "hello" function from AwesomeModule.js and call it!' },
+    { lines: [3], notes: 'Hello, Traveloka!' },
+    { lines: [5], notes: 'Remember this?' },
+    { lines: [5], notes: 'This is undefined ❌' },
+  ]}
+/>
+
+---
+
+import Aisi from './components/Aisi'
+
+<Aisi />
+
+---
+
+## #3
+# REACT
+```js
+import React from 'react'
+```
+
+---
+
+## "UI representation of data"
+
+---
+
+**[CodeSandbox](https://codesandbox.io/s/) is your friend**
+
+---
+
+## Function Component
+
+```jsx
+function Hello() {
+  return <h1>Hello, Traveloka</h1>
+}
+```
+
+---
+
+## Arrow-Function Component
+
+```jsx
+const Hello = () => <h1>Hello, Traveloka</h1>
+```
+
+---
+
+## Class Component
+
+```jsx
+class Hello extends React.Component {
+  render() {
+    return <h1>Hello, Traveloka</h1>
+  }
+}
+```
+
+---
+
+## Component Props
+
+```jsx
+function Greeting(props) {
+  return <h1>{props.text}</h1>
+}
+
+<Greeting text="Hello, Traveloka!" />
+```
+
+---
+
+## Displaying lists
+
+```jsx
+function TodoList(props) {
+  return (
+    <ul>
+      {props.todos.map(
+        todo => <li>{todo}</li>
+      )}
+    </ul>
+  );
+}
+
+<TodoList todos={['Buy eggs', 'Buy milk', 'Buy stuff']} />
+```
+
+---
+
+## Forwarding Props
+
+```jsx
+function InvisibleButton(props) {
+  return <button {...props} hidden />;
+}
+
+<InvisibleButton>You can't see me</InvisibleButton>
+```
+
+---
+
+## Responding to User Interaction
+
+```jsx
+<button onClick={() => alert('Clicked!')}>Click me</button>
+```
+
+<button style={{ padding: 16, fontSize: 16, fontWeight: 'bold', borderRadius: 4, cursor: 'pointer' }} onClick={() => alert('Clicked!')}>Click me</button>
+
+---
+
+# EXAMPLE: COUNTER
+
+---
+
+<CodeSurfer
+  title="Counter"
+  language="javascript"
+  theme={shadesOfPurple}
+  code={require('!raw-loader!./snippets/Counter.js')}
+  steps={[
+    { notes: '🤯 🤯 🤯'},
+    { lines: [1], notes: 'Import React 🤘🏻' },
+    { lines: [3], notes: 'Define your component' },
+    { range: [4, 6], notes: 'This is *state*' },
+    { lines: [5], notes: 'It can hold dynamic values' },
+    { lines: [5, 12], notes: 'Or, values that change over time' },
+    { lines: [11, 13], notes: 'These are the action buttons' },
+    { tokens: { 11: [4, 5, 6, 7, 8, 9, 10], 13: [4, 5, 6, 7, 8, 9, 10] }, notes: 'We want to respond to *click* events on these buttons'},
+    { range: [18, 32], notes: 'These are the *handlers*' },
+    { range: [19, 23], notes: 'To update the UI, we need setState' },
+    { ranges: [[4, 6], [20, 22]], notes: 'This *updates* to the original state' },
+    { lines: [5, 21], tokens: {4: [3], 20: [3], 6: [1], 22: [1]}, notes: 'See the connection? 😉' },
+    { range: [3, 33], notes: 'That\'s pretty much it!'},
+    { lines: [35], notes: 'Oh, don\'t forget to export so others can use 👌🏻'}
+  ]}
+/>
+
+---
+
+# [Exercise](https://codesandbox.io/s/): TodoList
+
+---
+
+# Thanks!
+&copy; 2018 <a href="https://www.linkedin.com/in/raibima-putra-b7a67897" target="_blank">Raibima Putra</a>
+
