@@ -8,9 +8,9 @@ class Counter extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.decrement}>Decrement</button>
-        <span>{this.state.counterValue}</span>
         <button onClick={this.increment}>Increment</button>
+        <div>{this.state.counterValue}</div>
+        <button onClick={this.decrement}>Decrement</button>
       </div>
     );
   }
